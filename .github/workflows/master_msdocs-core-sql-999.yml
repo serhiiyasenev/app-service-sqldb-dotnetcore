@@ -1,4 +1,4 @@
-name: [Default] Build and deploy ASP.Net Core app to Azure Web App
+name: Default - Build and deploy ASP.Net Core app to Azure Web App
 
 on:
   push:

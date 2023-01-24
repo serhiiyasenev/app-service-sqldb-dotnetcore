@@ -1,4 +1,4 @@
-name: [Custom] Build and deploy ASP.Net Core app to an Azure Web App
+name: Custom - Build and deploy ASP.Net Core app to an Azure Web App
 
 
 env:

@@ -10,7 +10,6 @@ namespace DotNetCoreSqlDb
 {
     public class Startup
     {
-        public static string connection;
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -23,7 +22,6 @@ namespace DotNetCoreSqlDb
         {
             services.AddControllersWithViews();
             var connectionString = Configuration.GetConnectionString("defaultConnection");
-            connection = connectionString;
             services.AddDbContext<MyDatabaseContext>(options => options.UseMySQL(connectionString));
         }
 

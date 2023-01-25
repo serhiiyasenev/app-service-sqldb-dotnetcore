@@ -5,12 +5,12 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using DotNetCoreSqlDb.Models;
-using System;
 
 namespace DotNetCoreSqlDb
 {
     public class Startup
     {
+        public static string connection;
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -23,9 +23,7 @@ namespace DotNetCoreSqlDb
         {
             services.AddControllersWithViews();
             var connectionString = Configuration.GetConnectionString("defaultConnection");
-            Console.WriteLine("==================");
-            Console.WriteLine($"Connetion String: `{connectionString}`");
-            Console.WriteLine("==================");
+            connection = connectionString;
             services.AddDbContext<MyDatabaseContext>(options => options.UseMySQL(connectionString));
         }
 

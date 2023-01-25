@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using DotNetCoreSqlDb.Models;
+using System;
 
 namespace DotNetCoreSqlDb
 {
@@ -21,8 +22,11 @@ namespace DotNetCoreSqlDb
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddDbContext<MyDatabaseContext>(options =>
-                    options.UseMySQL(Configuration.GetConnectionString("defaultConnection")));
+            var connectionString = Configuration.GetConnectionString("defaultConnection");
+            Console.WriteLine("==================");
+            Console.WriteLine($"Connetion String: `{connectionString}`");
+            Console.WriteLine("==================");
+            services.AddDbContext<MyDatabaseContext>(options => options.UseMySQL(connectionString));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

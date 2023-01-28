@@ -6,7 +6,7 @@ on:
       - master
 
 env:
-  DOTNET_VERSION: '7.0.x'
+  DOTNET_VERSION: '7.x'
 
 jobs:
   build:
@@ -18,7 +18,7 @@ jobs:
       - name: Set up .NET Core
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: '7.0.x'
+          dotnet-version: '7.x'
           include-prerelease: false
           
       - name: Install WASM Tools Workload
@@ -43,7 +43,7 @@ jobs:
         run: ${{env.DOTNET_ROOT}}/myapp/bundle --connection ${{ secrets.CONNECTIONSTRING }}
         
       - name: Upload artifact for deployment job
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: .net-app
           path: ${{env.DOTNET_ROOT}}/myapp

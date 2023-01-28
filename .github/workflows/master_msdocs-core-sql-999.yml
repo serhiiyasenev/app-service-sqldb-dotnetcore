@@ -11,22 +11,24 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v2.5.0
 
       - name: Set up .NET Core
-        uses: actions/setup-dotnet@v1
+        uses: actions/setup-dotnet@v3.0.3
         with:
           dotnet-version: '7.0.x'
           include-prerelease: true
 
       - name: Build with dotnet
         run: dotnet build --configuration Release
+        
+      - name: Install Required Tools
+        run: |
+        dotnet new tool-manifest
+        dotnet tool install dotnet-ef
 
       - name: dotnet publish
         run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
-        
-      - name: dotnet install ef
-        run: dotnet tool install -g dotnet-ef
 
       - name: dotnet bundle migration
         run: dotnet ef migrations bundle -p DotNetCoreSqlDb/DotNetCoreSqlDb.csproj -o ${{env.DOTNET_ROOT}}/myapp/migrate --verbose

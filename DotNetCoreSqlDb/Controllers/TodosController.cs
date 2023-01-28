@@ -30,7 +30,7 @@ namespace DotNetCoreSqlDb.Controllers
             }
             catch (Exception e)
             {
-
+                Console.WriteLine(e);
                 return View(todos);
             }
 

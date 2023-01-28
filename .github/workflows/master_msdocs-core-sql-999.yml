@@ -14,9 +14,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - uses: azure/login@v1
-      with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
                 
       - name: Set up .NET Core
         uses: actions/setup-dotnet@v3
@@ -45,6 +42,9 @@ jobs:
       - name: dotnet bundle migration
         run: dotnet ef migrations bundle -p DotNetCoreSqlDb/DotNetCoreSqlDb.csproj -o ${{env.DOTNET_ROOT}}/myapp/bundle
         
+      #- name: Generate scripts
+      #  run: dotnet ef migrations script --output ${{env.DOTNET_ROOT}}/sql/sql-script.sql --idempotent --context ApplicationDbContext
+      
       #- name: Deploy the Database Changes
       #  run: ${{env.DOTNET_ROOT}}/myapp/bundle --connection ${{ secrets.CONNECTIONSTRING }}
         
@@ -74,4 +74,4 @@ jobs:
           app-name: 'msdocs-core-sql-999'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_069034DCD60C4CA7B2DC2E417F3E5FD0 }}
-          package: '.'
+          package: ${{env.DOTNET_ROOT}}/myapp

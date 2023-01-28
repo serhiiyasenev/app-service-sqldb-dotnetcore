@@ -21,11 +21,17 @@ jobs:
           dotnet-version: ${{env.DOTNET_VERSION}}
           include-prerelease: false
         
+      - name: Install Nuget
+        uses: nuget/setup-nuget@v1
+        with:
+            nuget-version: ${{ env.NUGET_VERSION}}
+        
       - name: Install Required Tools
         run: |
           dotnet new tool-manifest
           dotnet tool install dotnet-ef
           dotnet restore
+          nuget restore
 
       - name: Build with dotnet
         run: dotnet build --configuration Release --no-restore
@@ -65,4 +71,4 @@ jobs:
           app-name: 'msdocs-core-sql-999'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_069034DCD60C4CA7B2DC2E417F3E5FD0 }}
-          package: .
+          package: '.'

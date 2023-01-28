@@ -74,4 +74,4 @@ jobs:
           app-name: 'msdocs-core-sql-999'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_069034DCD60C4CA7B2DC2E417F3E5FD0 }}
-          package: ${{env.DOTNET_ROOT}}/myapp
+          package: '.'

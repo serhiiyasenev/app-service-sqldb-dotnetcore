@@ -22,10 +22,13 @@ jobs:
           include-prerelease: false
         
       - name: Install Required Tools
-        run: dotnet tool install dotnet-ef
-            
+        run: |
+          dotnet new tool-manifest
+          dotnet tool install dotnet-ef
+          dotnet restore
+
       - name: Build with dotnet
-        run: dotnet build --configuration Release
+        run: dotnet build --configuration Release --no-restore
 
       - name: dotnet publish
         run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp

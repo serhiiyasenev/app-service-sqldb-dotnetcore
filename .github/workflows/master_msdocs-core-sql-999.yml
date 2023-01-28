@@ -16,7 +16,7 @@ jobs:
       - uses: actions/checkout@v3
       - uses: azure/login@v1
             with:
-                creds: ${{ secrets.AZURE_CREDENTIALS }}
+                creds: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_069034DCD60C4CA7B2DC2E417F3E5FD0 }}
                 
       - name: Set up .NET Core
         uses: actions/setup-dotnet@v3

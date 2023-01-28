@@ -32,7 +32,7 @@ jobs:
         run: dotnet ef migrations bundle -p DotNetCoreSqlDb/DotNetCoreSqlDb.csproj -o ${{env.DOTNET_ROOT}}/myapp/migrate
       
       - name: dotnet ef database update
-        run: dotnet ef database update
+        run: dotnet ef database update -p DotNetCoreSqlDb/DotNetCoreSqlDb.csproj
         
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2

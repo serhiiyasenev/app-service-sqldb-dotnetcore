@@ -42,8 +42,8 @@ jobs:
       - name: dotnet bundle migration
         run: dotnet ef migrations bundle -p DotNetCoreSqlDb/DotNetCoreSqlDb.csproj -o ${{env.DOTNET_ROOT}}/myapp/bundle
         
-      - name: Deploy the Database Changes
-        run: ${{env.DOTNET_ROOT}}/myapp/bundle --connection ${{ secrets.CONNECTIONSTRING }}
+      #- name: Deploy the Database Changes
+      #  run: ${{env.DOTNET_ROOT}}/myapp/bundle --connection ${{ secrets.CONNECTIONSTRING }}
         
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3

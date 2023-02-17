@@ -22,7 +22,7 @@ namespace DotNetCoreSqlDb
         {
             services.AddControllersWithViews();
             var connectionString = Configuration.GetConnectionString("defaultConnection");
-            services.AddDbContext<MyDatabaseContext>(options => options.UseMySQL(connectionString));
+            services.AddDbContext<MyDatabaseContext>(options => options.UseSqlServer(connectionString));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -36,11 +36,11 @@ jobs:
       - name: Build with dotnet
         run: dotnet build --configuration Release --no-restore
 
-      - name: dotnet publish
-        run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
+      # - name: dotnet publish
+        # run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
 
-      - name: dotnet bundle migration
-        run: dotnet ef migrations bundle -p DotNetCoreSqlDb/DotNetCoreSqlDb.csproj -o ${{env.DOTNET_ROOT}}/myapp/bundle
+      # - name: dotnet bundle migration
+        # run: dotnet ef migrations bundle -p DotNetCoreSqlDb/DotNetCoreSqlDb.csproj -o ${{env.DOTNET_ROOT}}/myapp/bundle
         
       #- name: Generate scripts
       #  run: dotnet ef migrations script --output ${{env.DOTNET_ROOT}}/sql/sql-script.sql --idempotent --context ApplicationDbContext
